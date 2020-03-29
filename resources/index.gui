@@ -1,0 +1,49 @@
+<svg>
+  <image id="image-background" />
+  
+  <g>
+    <rect x="0" y="0" width="100%" height="15%" fill="fb-black" />
+  </g>
+  <g id="calendar">
+    <text id="lbl-date"></text>
+    <text id="lbl-day-week"></text>
+  </g>
+  
+  <g id="heart-rate">
+    <image class="bar-icon" href="stat_hr_solid_24px.png" x="50%-24" y="8" width="20" height="20" fill="crimson"/>
+    <text id="lbl-heart-rate"></text>
+  </g>
+  
+  <text id="lbl-battery-level"></text>
+  
+  <svg id="time-container" x="40%" y="20%" width="100%" height="20%">
+    <rect x="0" y="0" width="100%" height="100%" fill="fb-dark-gray" opacity="0.6" />
+  </svg>
+  
+  <g id="time">
+    <text id="lbl-time"></text>
+    <text id="lbl-seconds"></text>
+    <text id="am-pm"></text>
+  </g>
+  
+  <g>
+    <rect x="0" y="90%" width="100%" height="10%" fill="fb-black" />
+  </g>
+  <g id="steps">
+    <rect class="bg"/>  
+    <circle class="tgt-no"/>  
+    <circle class="tgt-yes"/>  
+    <rect class="progress"/>  
+    <text class="count">777</text>
+    <image  class="icon" href="stat_steps_solid_24px.png" />
+  </g>
+  <g id="activeMinutes">
+    <rect class="bg"/>  
+    <circle class="tgt-no"/>  
+    <circle class="tgt-yes"/>  
+    <rect class="progress"/>    
+    <text class="count">777</text>
+    <image id="activeMinutes-icon" class="icon" href="stat_am_solid_24px.png" />
+  </g>
+</svg>
+

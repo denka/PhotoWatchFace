@@ -1,0 +1,28 @@
+{
+  "fitbit": {
+    "appUUID": "78a43408-e96d-4f0d-8a98-4cd4ec6ea9bb",
+    "appType": "clockface",
+    "appDisplayName": "PhotoWatchFace",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_heart_rate",
+      "access_activity"
+    ],
+    "buildTargets": [
+      "meson",
+      "gemini",
+      "mira",
+      "higgs"
+    ],
+    "i18n": {
+      "en": {
+        "name": "PhotoWatchFace"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~4.1.0"
+  }
+}
