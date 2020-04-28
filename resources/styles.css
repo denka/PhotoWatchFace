@@ -1,11 +1,6 @@
-.background {
-  viewport-fill: black;
-}
 #image-background{
-  y: 12%;
+  y: 25;
   x: 0;
-  width: 100%;
-  height: 88%;
 }
 #lbl-date {
   font-size: 20;
@@ -17,7 +12,7 @@
 }
 #lbl-day-week{
   font-size: 20;
-  text-length: 4;
+  text-length: 10;
   text-anchor: end;
   x: 100%-6;
   y: 37;

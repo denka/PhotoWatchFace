@@ -1,22 +1,24 @@
 import document from "document";
-// import { preferences } from "user-settings";
-// import { units } from "user-settings";
-// import { user } from "user-profile";
+import { preferences } from "user-settings";
+import { units } from "user-settings";
+import { user } from "user-profile";
 import * as fs from "fs";
 import * as messaging from "messaging";
 import { me as appbit } from "appbit";
 import { me as device } from "device";
-// import { locale } from "user-settings";
-import { display } from "display";
+// import { display } from "display";
 import { inbox } from "file-transfer";
 
 import * as activity from "./activity.js"
+import * as time from "./time.js"
+import * as statusBar from "./status_bar.js"
 
 
 // SETTINGS
 export const SETTINGS_TYPE = "cbor";
 export const SETTINGS_FILE = "settings.cbor";
 export const DEFAULT_IMAGE_FILE = "imageDefault.jpg";
+
 export let settings = loadSettings();
 export let backgroundEl = document.getElementById('image-background');
 export var language = "en";
@@ -32,11 +34,33 @@ export function applySettings() {
     if (settings.hasOwnProperty("isFastProgress")) {
       activity.isFastProgressSet(!!settings.isFastProgress);    
     }
+    
+    if (settings.hasOwnProperty("topBarBackground") && settings["topBarBackground"]) {
+       var topBarBackground = settings["topBarBackground"];
+       statusBar.topBar.style.fill = topBarBackground;     
+    }
+    if (settings.hasOwnProperty("topBarColor") && settings["topBarColor"]) {
+       var topBarColor = settings["topBarColor"];
+       statusBar.lblDayOfWeek.style.fill = topBarColor;
+      statusBar.lblHeartRate.style.fill = topBarColor;
+      statusBar.lblBatteryLevel.style.fill = topBarColor;
+      statusBar.lblDate.style.fill = topBarColor;
+    }
+    if (settings.hasOwnProperty("bottomBarBackground") && settings["bottomBarBackground"]) {
+       var bottomBarBackground = settings["bottomBarBackground"];
+       statusBar.bottomBar.style.fill = bottomBarBackground;     
+    }
 
-    if (settings.hasOwnProperty("bg") && settings["bg"]) {
-       backgroundEl.image = settings["bg"];  
+    if (settings.hasOwnProperty("backgroundImage") && settings["backgroundImage"]) {
+      backgroundEl.image = settings["backgroundImage"];  
     }else{
       backgroundEl.image = DEFAULT_IMAGE_FILE;
+    }
+    
+    if (settings.hasOwnProperty("timeColor") && settings.timeColor) {
+      time.lblTime.style.fill = settings.timeColor;
+      time.lblSeconds.style.fill = settings.timeColor;
+      time.lblAmPm.style.fill = settings.timeColor;
     }
 
     for (var i=0; i < activity.goalTypes.length; i++) {
@@ -82,9 +106,9 @@ export function loadSettings() {
       language: 'en'
     };    
     
-    if (units.distance === "us") {
-      defaults["distanceUnit"] = { values:[{value:"mi"}]}; 
-    }   
+    // if (units.distance === "us") {
+    //   defaults["distanceUnit"] = { values:[{value:"mi"}]}; 
+    // }   
     return defaults;
   }
 }
@@ -98,14 +122,14 @@ inbox.onnewfile = () => {
   do {
     fileName = inbox.nextFile();
     if (fileName) {
-      if (settings.bg && settings.bg !== "") {
+      if (settings.backgroundImage && settings.backgroundImage !== "") {
         try {
-          fs.unlinkSync(settings.bg);
+          fs.unlinkSync(settings.backgroundImage);
         }catch (ex) {
           // console.log(ex);
         }
       }
-      settings.bg = `/private/data/${fileName}`;
+      settings.backgroundImage = `/private/data/${fileName}`;
       applySettings();
     }
   } while (fileName);

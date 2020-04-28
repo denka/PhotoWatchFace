@@ -4,6 +4,9 @@ import { Image } from "image";
 import { device } from "peer";
 import { settingsStorage } from "settings";
 
+settingsStorage.setItem("screenWidth", device.screen.width);
+settingsStorage.setItem("screenHeight", device.screen.height);
+
 settingsStorage.addEventListener("change", evt => {
   if (evt.oldValue !== evt.newValue) {
     sendValue(evt.key, evt.newValue);
@@ -12,7 +15,7 @@ settingsStorage.addEventListener("change", evt => {
 
 function sendValue(key, val) {
   if (val) {
-    if (key === "background-image") {
+    if (key === "backgroundImage") {
       compressAndTransferImage(val);
     }else{
       sendSettingData({

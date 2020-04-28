@@ -1,8 +1,8 @@
-<svg>
+<svg id="root">
   <image id="image-background" />
   
   <g>
-    <rect x="0" y="0" width="100%" height="15%" fill="fb-black" />
+    <rect x="0" y="0" width="100%" height="45" fill="fb-black" id="top-bar" />
   </g>
   <g id="calendar">
     <text id="lbl-date"></text>
@@ -10,13 +10,13 @@
   </g>
   
   <g id="heart-rate">
-    <image class="bar-icon" href="stat_hr_solid_24px.png" x="50%-24" y="8" width="20" height="20" fill="crimson"/>
+    <image id="icon-heart-rate" class="bar-icon" href="stat_hr_solid_24px.png" x="50%-24" y="8" width="20" height="20" fill="crimson"/>
     <text id="lbl-heart-rate"></text>
   </g>
   
   <text id="lbl-battery-level"></text>
   
-  <svg id="time-container" x="40%" y="20%" width="100%" height="20%">
+  <svg id="time-container" x="120" y="60" width="100%" height="60">
     <rect x="0" y="0" width="100%" height="100%" fill="fb-dark-gray" opacity="0.6" />
   </svg>
   
@@ -27,7 +27,7 @@
   </g>
   
   <g>
-    <rect x="0" y="90%" width="100%" height="10%" fill="fb-black" />
+    <rect x="0" y="90%" width="100%" height="10%" fill="fb-black" id="bottom-bar" />
   </g>
   <g id="steps">
     <rect class="bg"/>  
